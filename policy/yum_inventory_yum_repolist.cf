@@ -11,7 +11,7 @@ bundle agent yum_inventory_yum_repolist
     have_yum_repolist_disabled_state_file::
       "yum_repolist_disabled_output_data"
         data => data_readstringarray( $(yum_inventory_data_cache.yum_repolist_disabled_state_file),
-                                      "Loaded plugins:|Loading mirror|repolist:|repo id",
+                                      "Loaded plugins:|Loading mirror|repolist:|repo id|This system is receiving updates",
                                       "\s", 100, 1M ),
         comment => "We probably won't have more than 100 repos or 1M of data";
 
@@ -28,7 +28,7 @@ bundle agent yum_inventory_yum_repolist
     have_yum_repolist_enabled_state_file::
       "yum_repolist_enabled_output_data"
         data => data_readstringarray( $(yum_inventory_data_cache.yum_repolist_enabled_state_file),
-                                      "Loaded plugins:|Loading mirror|repolist:|repo id*[^\n]",
+                                      "Loaded plugins:|Loading mirror|repolist:|repo id*[^\n]|This system is receiving updates",
                                       "\s", 100, 1M ),
         comment => "We probably won't have more than 100 repos or 1M of data";
 
